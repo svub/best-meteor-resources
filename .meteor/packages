@@ -8,12 +8,8 @@ autopublish
 insecure
 coffeescript
 less
-accounts-facebook
-accounts-google
 accounts-github
-accounts-twitter
 accounts-password
 mizzao:bootstrap-3
 ian:accounts-ui-bootstrap-3
 chrismbeckett:fontawesome4
-
