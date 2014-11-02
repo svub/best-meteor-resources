@@ -1,0 +1,65 @@
+<head>
+  <title>Best Meteor Resources</title>
+</head>
+
+<body>
+  <ul class="menu"> {{> loginButtons }} </ul>
+
+  <article class="container">
+    <div class="page-header">
+      <h1>Best Meteor Resources <small>Read, rate, add</small></h1>
+    </div>
+
+    <section class="list"> {{> list}} </section>
+
+    {{#if currentUser }}
+      {{> addLink }}
+    {{ else }}
+      <p>Sign in to rate and add links to the list!</p>
+    {{/if }}
+    <p>Sign in to rate and add links to the list!</p>
+  </article>
+</body>
+
+<template name="list">
+  {{#each entry }}
+    {{> listEntry }}
+  {{ else }}
+    No entries yet! Log in and add one!
+  {{/each }}
+</template>
+
+<template name="listEntry">
+  <div class="row">
+    <div class="col-xs-1 count">
+      {{ count }}
+    </div>
+    <div class="col-xs-8 name">
+      <a href="{{ link }}" target="_blank">{{ name }}</a>
+    </div>
+    <div class="col-xs-3 actions">
+      {{#if currentUser }}
+        <button class="fa {{#if isFavorite}} fa-heart {{ else }} fa-heart-o {{/if }} toggle-fav btn btn-link"></button>
+        {{#if isMine }}
+          <button class="fa fa-times delete btn btn-link"></button>
+        {{/if }}
+      {{/if }}
+    </div>
+  </div>
+</template>
+
+<template name="addLink">
+  <form class="create" role="form">
+    <div class="row">
+      <div class="col-sm-3">
+        <input class="name form-control" type="text" placeholder="Name"/>
+      </div>
+      <div class="col-sm-6">
+        <input class="link form-control" type="url" placeholder="Link"/>
+      </div>
+      <div class="col-sm-3">
+        <button type="submit" class="btn btn-default">Add</button>
+      </div>
+    </div>
+  </form>
+</template>
